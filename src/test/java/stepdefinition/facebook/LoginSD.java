@@ -1,19 +1,22 @@
-package stepdefinition;
+package stepdefinition.facebook;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import framework.webPages.HomePage;
-import framework.webPages.LoginPage;
+import framework.webPages.facebook.FacebookLandingPage;
+import framework.webPages.facebook.MessengerLoginPage;
+import framework.webPages.facebook.FacebookLoginPage;
 import org.testng.Assert;
+import stepdefinition.SharedSD.SharedSD;
 
 /**
  * Created by mohammadmuntakim.
  */
 public class LoginSD {
 
-    private HomePage homePage = new HomePage();
-    private LoginPage loginPage = new LoginPage();
+    private FacebookLandingPage homePage = new FacebookLandingPage();
+    private MessengerLoginPage loginPage = new MessengerLoginPage();
+    private FacebookLoginPage fbLoginPage = new FacebookLoginPage();
 
     @Given("^I am on home page$")
     public void iAmOnHomePage() {
@@ -38,10 +41,10 @@ public class LoginSD {
                 homePage.enterLastName(anyText);
                 break;
             case "mobile number":
-                homePage.enterMobileNumber(anyText);
+                homePage.enterMobileNumberOrEmail(anyText);
                 break;
             case "new password":
-                homePage.enterNewPassword(anyText);
+                homePage.enterNewPassWord(anyText);
                 break;
         }
     }
@@ -51,7 +54,7 @@ public class LoginSD {
 
         switch (button) {
             case "login":
-                homePage.clickOnLoginButton();
+                homePage.clickLoginButton();
                 break;
             case "create account":
                 //Implement Create account object
@@ -61,11 +64,11 @@ public class LoginSD {
 
     @Then("^I verify that i am an invalid login page$")
     public void verifyInvalidLoginPage() {
-        Assert.assertEquals(loginPage.getPageHeader(), "Log Into Facebook");
+        Assert.assertEquals(loginPage.getPageTitle(), "Log Into Facebook");
     }
 
     @Then("^I verify invalid signup error message$")
     public void verifySignUpErrorMessage() {
-        Assert.assertEquals(homePage.getErrorMessage(), "Invalid signup");
+        Assert.assertEquals(fbLoginPage.getErrorMessage(), "Invalid signup");
     }
 }

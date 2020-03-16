@@ -1,4 +1,4 @@
-package framework;
+package framework.testWrappers;
 
 import cucumber.api.java.After;
 import io.appium.java_client.AppiumDriver;
@@ -7,7 +7,6 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
-import util.ConfigReader;
 
 import java.net.MalformedURLException;
 import java.net.URL;

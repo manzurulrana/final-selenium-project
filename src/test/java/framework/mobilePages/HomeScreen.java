@@ -1,10 +1,8 @@
 package framework.mobilePages;
 
-import framework.MobileBasePage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindBy;
-import org.openqa.selenium.By;
 
 public class HomeScreen extends MobileBasePage {
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='SKIP ']")

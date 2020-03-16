@@ -1,5 +1,6 @@
-package framework;
+package framework.webPages.BasePages;
 
+import framework.testWrappers.AppiumWrapper;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -9,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
-import static framework.AppiumWrapper.getAppiumDriver;
+import static framework.testWrappers.AppiumWrapper.getAppiumDriver;
 
 public class MobileBasePage {
 

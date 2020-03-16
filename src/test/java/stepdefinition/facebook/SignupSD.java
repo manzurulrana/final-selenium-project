@@ -1,26 +1,28 @@
-package stepdefinition;
+package stepdefinition.facebook;
 
 import cucumber.api.java.en.Then;
-import framework.webPages.HomePage;
 import org.junit.Assert;
+import framework.webPages.facebook.FacebookLandingPage;
 
 public class SignupSD {
 
-    private HomePage homePage = new HomePage();
+    private FacebookLandingPage homePage = new FacebookLandingPage();
 
     @Then("^I verify gender (female|male) is selected$")
     public void genderValidation(String gender) {
 
         if (gender.equals("female")) {
             if (!homePage.isGenderFemaleSelected()) {
-                homePage.clickOnFemaleGender();
+                homePage.selectGenderFemale();
             }
             Assert.assertTrue(homePage.isGenderFemaleSelected());
         } else if (gender.equals("male")) {
             if (!homePage.isGenderMaleSelected()) {
-                homePage.clickOnMaleGender();
+                homePage.selectGenderMale();
             }
             Assert.assertTrue(homePage.isGenderMaleSelected());
+
+
         }
     }
 }
