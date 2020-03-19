@@ -3,12 +3,12 @@ package stepdefinition.Hotels;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import framework.webPages.HotelsHomePage.HotelsHomePage;
+import framework.webPages.HotelsHomePage.HotelsHomePageWeb;
 import org.testng.Assert;
 
 public class HotelsHomePageSD {
 
-    private HotelsHomePage homePage = new HotelsHomePage();
+    private HotelsHomePageWeb homePage = new HotelsHomePageWeb();
 
     @Given("^I am on hotels homepage page$")
     public void iAmOnHotelsHomePage(){

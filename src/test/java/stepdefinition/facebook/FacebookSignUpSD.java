@@ -3,12 +3,12 @@ package stepdefinition.facebook;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import framework.webPages.facebook.FacebookLandingPage;
+import framework.webPages.facebook.FacebookLandingPageWeb;
 import org.testng.Assert;
 
 public class FacebookSignUpSD {
 
-    FacebookLandingPage facebookLandingPage = new FacebookLandingPage();
+    FacebookLandingPageWeb facebookLandingPage = new FacebookLandingPageWeb();
 
     @Given("^I am on facebook landing page$")
     public void iAmOnFacebookLandingPage(){

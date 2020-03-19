@@ -2,11 +2,11 @@ package stepdefinition.facebook;
 
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
-import framework.webPages.facebook.FacebookLandingPage;
+import framework.webPages.facebook.FacebookLandingPageWeb;
 
 public class SignupSD {
 
-    private FacebookLandingPage homePage = new FacebookLandingPage();
+    private FacebookLandingPageWeb homePage = new FacebookLandingPageWeb();
 
     @Then("^I verify gender (female|male) is selected$")
     public void genderValidation(String gender) {

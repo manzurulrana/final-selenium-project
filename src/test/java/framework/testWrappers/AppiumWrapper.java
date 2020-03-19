@@ -7,6 +7,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
+import util.ConfigReader;
 
 import java.net.MalformedURLException;
 import java.net.URL;

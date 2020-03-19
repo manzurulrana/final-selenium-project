@@ -3,9 +3,9 @@ package stepdefinition.darkSkyAPI;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import framework.webPages.darkskyAPI.DarkSkyApiPage;
-import framework.webPages.darkskyAPI.DarkSkyHomePage;
-import framework.webPages.darkskyAPI.DarkSkyRegistrationPage;
+import framework.webPages.darkskyAPI.DarkSkyApiPageWeb;
+import framework.webPages.darkskyAPI.DarkSkyHomePageWeb;
+import framework.webPages.darkskyAPI.DarkSkyRegistrationPageWeb;
 import org.testng.Assert;
 import util.DateUtil;
 
@@ -13,13 +13,13 @@ import java.util.List;
 
 public class DarkSkyHomePageSD {
 
-    private DarkSkyHomePage darkSkyHomePage = null;
-    private DarkSkyApiPage darkSkyApiPage = null;
-    private DarkSkyRegistrationPage darkSkyRegistrationPage = null;
+    private DarkSkyHomePageWeb darkSkyHomePage = null;
+    private DarkSkyApiPageWeb darkSkyApiPage = null;
+    private DarkSkyRegistrationPageWeb darkSkyRegistrationPage = null;
 
-    @Given("^I am on dark sky homepage$")
+    @Given("^I am on DarkSky homepage$")
     public void onDarkSkyHomePage(){
-        darkSkyHomePage = new DarkSkyHomePage();
+        darkSkyHomePage = new DarkSkyHomePageWeb();
 
         String expectedURL = "https://darksky.net/";
         String actualURL = darkSkyHomePage.getURL();

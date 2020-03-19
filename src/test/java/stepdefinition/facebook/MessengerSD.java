@@ -1,17 +1,17 @@
 package stepdefinition.facebook;
 
 import cucumber.api.java.en.Given;
-import framework.webPages.facebook.FacebookLandingPage;
-import framework.webPages.facebook.MessengerLoginPage;
-import framework.webPages.facebook.MessengerPage;
+import framework.webPages.facebook.FacebookLandingPageWeb;
+import framework.webPages.facebook.MessengerLoginPageWeb;
+import framework.webPages.facebook.MessengerPageWeb;
 import org.testng.Assert;
 import stepdefinition.SharedSD.SharedSD;
 
 public class MessengerSD {
 
-    private FacebookLandingPage homePage = new FacebookLandingPage();
-    private MessengerPage messengerPage = new MessengerPage();
-    private MessengerLoginPage messengerLoginPage = new MessengerLoginPage();
+    private FacebookLandingPageWeb homePage = new FacebookLandingPageWeb();
+    private MessengerPageWeb messengerPage = new MessengerPageWeb();
+    private MessengerLoginPageWeb messengerLoginPage = new MessengerLoginPageWeb();
 
     @Given("^I am on messenger page$")
     public void setMessengerPage() {

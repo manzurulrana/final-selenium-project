@@ -1,13 +1,11 @@
 package framework.webPages.HotelsHomePage;
 
-import framework.webPages.BasePages.BasePage;
+import framework.webPages.BasePages.WebBasePage;
 import org.openqa.selenium.By;
 import util.DateUtil;
-
-
 import java.time.LocalDate;
 
-public class HotelsHomePage extends BasePage {
+public class HotelsHomePageWeb extends WebBasePage {
     private By popUpCloseIcon = By.xpath("//button[@aria-label = 'Close overlay']");
     private By checkInCalenderIcon = By.id("widget-query-label-1");
     private By checkOutCalenderIcon = By.id("widget-query-label-3");
@@ -26,15 +24,16 @@ public class HotelsHomePage extends BasePage {
     public boolean isPopUpDisplayed(){
         return isElementDisplayed(popUpCloseIcon);
     }
-    public void clickOnPopUpCloseIcon(){
+
+    public void clickPopUpCloseIcon(){
         clickOn(popUpCloseIcon);
     }
 
-    public void clickOnCheckInCalenderIcon(){
+    public void clickCheckInCalenderIcon(){
         clickOn(checkInCalenderIcon);
     }
 
-    public void clickOnCheckOutCalenderIcon(){
+    public void clickCheckOutCalenderIcon(){
         clickOn(checkOutCalenderIcon);
     }
 
@@ -45,13 +44,11 @@ public class HotelsHomePage extends BasePage {
     public void clickOnPreviousMonthButton(){
         clickOn(previousMonthButton);
     }
+
     public void clickOnNextMonthButton(){
         clickOnNextIcon(nextMonthButton);
     }
 
-    /*checkingDate is the check in or check out date,
-    *calenderViewMonth is the default view month when initially opening the calender.
-    */
     public void selectCalenderDate(LocalDate checkingDate, LocalDate defaultCalenderViewMonth){
 
         int calenderViewMonth = DateUtil.monthValue(defaultCalenderViewMonth);
@@ -76,6 +73,7 @@ public class HotelsHomePage extends BasePage {
     public void clickOnCheckInInput(){
         clickOn(checkInBox);
     }
+
     public String getCheckInDate(){
         return getAttributeValueFromElement(checkInBox, "value");
     }
@@ -84,8 +82,8 @@ public class HotelsHomePage extends BasePage {
         return getTextFromElement(nightIcon);
     }
 
-    public void selectRoomsFromDropDown(String  noOfRooms){
-        selectDropDownElementByText(roomsDropDown, noOfRooms);
+    public void selectRoomsFromDropDown(String  numOfRooms){
+        selectDropDownElementByText(roomsDropDown, numOfRooms);
     }
 
     public void selectAdultsFromDropDown(String noOfAdults){

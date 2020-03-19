@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class BasePage {
+public class WebBasePage {
     // This is the most common wait function used in selenium
     public static WebElement fluentWait(final By locator) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(SharedSD.getDriver())
@@ -78,6 +78,7 @@ public class BasePage {
         }
         return values;
     }
+
     public Select selectDropDown(By locator){
         return new Select(SharedSD.getDriver().findElement(locator));
     }
@@ -98,7 +99,7 @@ public class BasePage {
         selectDropDown(locator).selectByValue(value);
     }
 
-    public boolean isDropDownContainsValue(By locator, String value){
+    public boolean DropDownContainsValue(By locator, String value){
         List<WebElement> listOfAllOptions = selectDropDown(locator).getOptions();
 
         for (WebElement option: listOfAllOptions){
@@ -109,7 +110,7 @@ public class BasePage {
         return false;
     }
 
-    public boolean isDropdownHasDuplicates(By locator){
+    public boolean iDropdownHasDuplicates(By locator){
         List<WebElement> listContainingDuplicateElements = selectDropDown(locator).getOptions();
         //converting the List into a Set removes duplicate elements from List
         Set<WebElement> setAfterRemovingDuplicateElements = new HashSet<>(listContainingDuplicateElements);

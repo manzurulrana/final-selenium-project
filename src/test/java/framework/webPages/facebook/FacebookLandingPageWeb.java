@@ -1,12 +1,12 @@
 package framework.webPages.facebook;
 
-import framework.webPages.BasePages.BasePage;
+import framework.webPages.BasePages.WebBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.Set;
 
-public class FacebookLandingPage extends BasePage {
+public class FacebookLandingPageWeb extends WebBasePage {
     //Locators
     private By emailTextField = By.id("email");
     private By passTextField = By.id("pass");
@@ -44,9 +44,9 @@ public class FacebookLandingPage extends BasePage {
         setValue(passTextField, value);
     }
 
-    public FacebookLoginPage clickLoginButton() {
+    public FacebookLoginPageWeb clickLoginButton() {
         clickOn(loginButton);
-        return new FacebookLoginPage();
+        return new FacebookLoginPageWeb();
     }
 
     public void enterFirstName(String firstName){
@@ -153,14 +153,14 @@ public class FacebookLandingPage extends BasePage {
         return femaleRadioButton;
     }
 
-    public MessengerPage clickOnMessengerLink(){
+    public MessengerPageWeb clickOnMessengerLink(){
         clickOn(messengerLink);
-        return new MessengerPage();
+        return new MessengerPageWeb();
     }
 
-    public FacebookAboutPage clickOnAboutLink(){
+    public FacebookAboutPageWeb clickOnAboutLink(){
         clickOn(aboutLink);
-        return new FacebookAboutPage();
+        return new FacebookAboutPageWeb();
     }
 
 }

@@ -1,12 +1,12 @@
 package framework.webPages.darkskyAPI;
 
-import framework.webPages.BasePages.BasePage;
+import framework.webPages.BasePages.WebBasePage;
 import org.openqa.selenium.By;
 
 import java.util.Collections;
 import java.util.List;
 
-public class DarkSkyHomePage extends BasePage {
+public class DarkSkyHomePageWeb extends WebBasePage {
 
     private By darkSkyApiLink = By.xpath("//div[@class='inner']//a[contains(text(),'Dark Sky API')]");
     private By currentTemperature = By.xpath("(//span[starts-with(@class, 'summary')])[1]");
@@ -18,9 +18,9 @@ public class DarkSkyHomePage extends BasePage {
     private By lowestTempOfToday = By.xpath("(//div[contains(@class, 'highLowTemp')])[1]//span[contains(@class, 'highTemp')]//span[@class = 'temp']");
     private By highestTempOfToday = By.xpath("(//div[contains(@class, 'highLowTemp')])[1]//span[contains(@class, 'lowTemp')]//span[@class = 'temp']");
 
-    public DarkSkyApiPage clickOnDarkSkyApiLink(){
+    public DarkSkyApiPageWeb clickOnDarkSkyApiLink(){
         clickOn(darkSkyApiLink);
-        return new DarkSkyApiPage();
+        return new DarkSkyApiPageWeb();
     }
     public int getCurrentTemperature(){
         String currentTempText = getTextFromElement(currentTemperature);

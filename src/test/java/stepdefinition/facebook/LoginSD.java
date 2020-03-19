@@ -3,9 +3,9 @@ package stepdefinition.facebook;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import framework.webPages.facebook.FacebookLandingPage;
-import framework.webPages.facebook.MessengerLoginPage;
-import framework.webPages.facebook.FacebookLoginPage;
+import framework.webPages.facebook.FacebookLandingPageWeb;
+import framework.webPages.facebook.MessengerLoginPageWeb;
+import framework.webPages.facebook.FacebookLoginPageWeb;
 import org.testng.Assert;
 import stepdefinition.SharedSD.SharedSD;
 
@@ -14,9 +14,9 @@ import stepdefinition.SharedSD.SharedSD;
  */
 public class LoginSD {
 
-    private FacebookLandingPage homePage = new FacebookLandingPage();
-    private MessengerLoginPage loginPage = new MessengerLoginPage();
-    private FacebookLoginPage fbLoginPage = new FacebookLoginPage();
+    private FacebookLandingPageWeb homePage = new FacebookLandingPageWeb();
+    private MessengerLoginPageWeb loginPage = new MessengerLoginPageWeb();
+    private FacebookLoginPageWeb fbLoginPage = new FacebookLoginPageWeb();
 
     @Given("^I am on home page$")
     public void iAmOnHomePage() {

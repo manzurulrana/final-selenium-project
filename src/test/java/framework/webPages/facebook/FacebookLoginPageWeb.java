@@ -1,10 +1,10 @@
 package framework.webPages.facebook;
 
-import framework.webPages.BasePages.BasePage;
+import framework.webPages.BasePages.WebBasePage;
 
 import org.openqa.selenium.By;
 
-public class FacebookLoginPage extends BasePage {
+public class FacebookLoginPageWeb extends WebBasePage {
     //Locators
     private By loginError = By.xpath("//a[text()='Forgot Password?']");
     private By incorrectPasswordErrorMessage = By.xpath("//div[starts-with(text(), 'The password')]");
