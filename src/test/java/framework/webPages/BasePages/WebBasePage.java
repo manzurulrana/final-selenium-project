@@ -5,7 +5,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import stepdefinition.SharedSD.SharedSD;
 
-
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -63,20 +62,30 @@ public class WebBasePage {
         return fluentWait(locator).getAttribute(attributeName);
     }
 
-    public List<WebElement> getElements(By locator){
+    public List<WebElement> getWebElements(By locator){
 
         return SharedSD.getDriver().findElements(locator);
     }
 
-    public List<String> getValuesFromElements(By locator){
+    public List<String> getTextFromElements(By locator){
 
-        List<WebElement> webElements = getElements(locator);
+        List<WebElement> webElements = getWebElements(locator);
         List<String> values= new ArrayList<>();
 
         for (WebElement webElement: webElements){
             values.add(webElement.getText());
         }
         return values;
+    }
+
+    public List<String> getAttributeValuesFromElements(By locator, String attributeName){
+        List<WebElement> webElements = getWebElements(locator);
+        List<String> attributeValues = new ArrayList<>();
+
+        for (WebElement webElement: webElements){
+            attributeValues.add(webElement.getAttribute(attributeName));
+        }
+        return attributeValues;
     }
 
     public Select selectDropDown(By locator){
@@ -99,7 +108,7 @@ public class WebBasePage {
         selectDropDown(locator).selectByValue(value);
     }
 
-    public boolean DropDownContainsValue(By locator, String value){
+    public boolean isDropDownContainsValue(By locator, String value){
         List<WebElement> listOfAllOptions = selectDropDown(locator).getOptions();
 
         for (WebElement option: listOfAllOptions){
@@ -110,7 +119,7 @@ public class WebBasePage {
         return false;
     }
 
-    public boolean iDropdownHasDuplicates(By locator){
+    public boolean isDropdownHasDuplicates(By locator){
         List<WebElement> listContainingDuplicateElements = selectDropDown(locator).getOptions();
         //converting the List into a Set removes duplicate elements from List
         Set<WebElement> setAfterRemovingDuplicateElements = new HashSet<>(listContainingDuplicateElements);
@@ -177,7 +186,6 @@ public class WebBasePage {
                 day.click();
                 return;
             }
-
         }
     }
 
@@ -217,9 +225,13 @@ public class WebBasePage {
         return isEnabled;
     }
 
-    public void scrollByVisibleElement(By locator){
-
+    public void scrollUpToVisibleElement(By locator){
         JavascriptExecutor js = (JavascriptExecutor) SharedSD.getDriver();
-        js.executeScript("arguments[0].scrollIntoView();", fluentWait(locator));
+        js.executeScript("arguments[0].scrollIntoView(true);", fluentWait(locator));
+    }
+
+    public void scrollDownBy(int numberOfPixels){
+        JavascriptExecutor js = (JavascriptExecutor) SharedSD.getDriver();
+        js.executeScript("window.scrollBy(0,"+ numberOfPixels + ")", "");
     }
 }

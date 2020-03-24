@@ -2,6 +2,7 @@ package framework.webPages.darkskyAPI;
 
 import framework.webPages.BasePages.WebBasePage;
 import org.openqa.selenium.By;
+import util.PageUtil;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,7 @@ public class DarkSkyHomePageWeb extends WebBasePage {
     }
 
     public List<String> getTimelineTemperatures(){
-        return getValuesFromElements(timelineTemperatures);
+        return getTextFromElements(timelineTemperatures);
     }
 
     public int getMaxTimelineTemperature(){
@@ -49,12 +50,12 @@ public class DarkSkyHomePageWeb extends WebBasePage {
     }
 
     public List<String> getTimelineHours(){
-        return getValuesFromElements(timelineHours);
+        return getTextFromElements(timelineHours);
     }
 
     public void clickOnTodayTimeline() throws InterruptedException {
-        scrollByVisibleElement(todayTimeline);
-        Thread.sleep(2000);
+        scrollUpToVisibleElement(todayTimeline);
+        PageUtil.syncWait(2000);
         clickOn(todayTimeline);
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public class DateUtil {
 
     //get future date based on a given date
-    public static LocalDate getFutureDate(LocalDate givenDate, int days){
+    public static LocalDate getDateInFuture(LocalDate givenDate, int days){
 
         return givenDate.plusDays(days);
     }

@@ -1,7 +1,6 @@
 package framework.webPages.facebook;
 
 import framework.webPages.BasePages.WebBasePage;
-
 import org.openqa.selenium.By;
 
 public class MessengerLoginPageWeb extends WebBasePage {

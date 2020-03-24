@@ -1,14 +1,14 @@
-package stepdefinition.Hotels;
+package stepdefinition.Hotels.com;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import framework.webPages.HotelsHomePage.HotelsHomePageWeb;
+import framework.webPages.HotelsHomePage.HotelsHomePage;
 import org.testng.Assert;
 
 public class HotelsHomePageSD {
 
-    private HotelsHomePageWeb homePage = new HotelsHomePageWeb();
+    private HotelsHomePage homePage = new HotelsHomePage();
 
     @Given("^I am on hotels homepage page$")
     public void iAmOnHotelsHomePage(){
@@ -34,7 +34,7 @@ public class HotelsHomePageSD {
 
     @Then("^I verify that I get (\\d+) children dropdown$")
     public void verifyChildrenDropdown(int expectedNoOfChildDropDown) {
-        int actualNoOfChildDropDown = homePage.getNoOfChildDropDowns();
+        int actualNoOfChildDropDown = homePage.getNoOfChildrenDropDowns();
 
         Assert.assertEquals(expectedNoOfChildDropDown, actualNoOfChildDropDown, "Actual child drop downs: " + actualNoOfChildDropDown);
     }

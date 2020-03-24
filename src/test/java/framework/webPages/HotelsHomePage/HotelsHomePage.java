@@ -2,11 +2,17 @@ package framework.webPages.HotelsHomePage;
 
 import framework.webPages.BasePages.WebBasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import util.DateUtil;
-import java.time.LocalDate;
+import util.PageUtil;
 
-public class HotelsHomePageWeb extends WebBasePage {
+import java.time.LocalDate;
+import java.util.List;
+
+public class HotelsHomePage extends WebBasePage {
     private By popUpCloseIcon = By.xpath("//button[@aria-label = 'Close overlay']");
+    private By destinationInput = By.xpath("//input[@name = 'q-destination']");
+    private By autoSuggestDestinations = By.xpath("//div[@class = 'autosuggest-category-result']");
     private By checkInCalenderIcon = By.id("widget-query-label-1");
     private By checkOutCalenderIcon = By.id("widget-query-label-3");
     private By datePickerHeaderText = By.xpath("(//div[@class = 'widget-datepicker-label'])[1]");
@@ -19,21 +25,45 @@ public class HotelsHomePageWeb extends WebBasePage {
     private By roomsDropDown = By.xpath("//select[@name = 'q-rooms']");
     private By adultsDropDown = By.xpath("//select[contains(@name, 'adults')]");
     private By childrenDropDown = By.xpath("//select[contains(@name, 'children')]");
-    private By childDropDowns = By.xpath("//select[contains(@name, 'child') and contains(@name, 'age')]");
+    private By childrenRoomDropDowns = By.xpath("//select[contains(@name, 'child') and contains(@name, 'age')]");
+    private By adultRoomDropDowns = By.xpath("//select[contains(@id, 'adults')]");
+    private By searchButton = By.xpath("//button[@type = 'submit']");
 
     public boolean isPopUpDisplayed(){
         return isElementDisplayed(popUpCloseIcon);
     }
 
-    public void clickPopUpCloseIcon(){
+    public void clickOnPopUpCloseIcon(){
         clickOn(popUpCloseIcon);
     }
 
-    public void clickCheckInCalenderIcon(){
+    public void clickOnDestinationInput(){
+        clearTextField(destinationInput);
+        clickOn(destinationInput);
+    }
+
+    public List<WebElement> getAutoSuggestDestinations(){
+        return getWebElements(autoSuggestDestinations);
+    }
+
+    public void selectDestination(String destination) throws InterruptedException {
+        clickOnDestinationInput();
+        List<WebElement> autoSuggestDestinations = getAutoSuggestDestinations();
+
+        for(WebElement element: autoSuggestDestinations){
+
+            if(element.getText().equalsIgnoreCase(destination)){
+                element.click();
+                return;
+            }
+        }
+    }
+
+    public void clickOnCheckInCalenderIcon(){
         clickOn(checkInCalenderIcon);
     }
 
-    public void clickCheckOutCalenderIcon(){
+    public void clickOnCheckOutCalenderIcon(){
         clickOn(checkOutCalenderIcon);
     }
 
@@ -49,7 +79,7 @@ public class HotelsHomePageWeb extends WebBasePage {
         clickOnNextIcon(nextMonthButton);
     }
 
-    public void selectCalenderDate(LocalDate checkingDate, LocalDate defaultCalenderViewMonth){
+    public void selectCalenderDate(LocalDate checkingDate, String defaultCalenderViewMonth){
 
         int calenderViewMonth = DateUtil.monthValue(defaultCalenderViewMonth);
         int checkingMonth = DateUtil.monthValue(checkingDate);
@@ -70,6 +100,19 @@ public class HotelsHomePageWeb extends WebBasePage {
        clickOnCheckingDate(daysOfMonth, checkingDate);
     }
 
+    public void selectCheckInCheckOutDate(LocalDate checkInDate, LocalDate checkOutDate) throws InterruptedException {
+        clickOnCheckInCalenderIcon();
+        String defaultCalenderViewMonth = getCalenderViewMonth();
+        selectCalenderDate(checkInDate, defaultCalenderViewMonth);
+
+        PageUtil.syncWait(2000);
+
+        clickOnCheckOutCalenderIcon();
+        defaultCalenderViewMonth = getCalenderViewMonth();
+        selectCalenderDate(checkOutDate, defaultCalenderViewMonth);
+
+    }
+
     public void clickOnCheckInInput(){
         clickOn(checkInBox);
     }
@@ -82,8 +125,8 @@ public class HotelsHomePageWeb extends WebBasePage {
         return getTextFromElement(nightIcon);
     }
 
-    public void selectRoomsFromDropDown(String  numOfRooms){
-        selectDropDownElementByText(roomsDropDown, numOfRooms);
+    public void selectRoomsFromDropDown(String  noOfRooms){
+        selectDropDownElementByText(roomsDropDown, noOfRooms);
     }
 
     public void selectAdultsFromDropDown(String noOfAdults){
@@ -94,7 +137,16 @@ public class HotelsHomePageWeb extends WebBasePage {
         selectDropDownElementByText(childrenDropDown, noOfChildren);
     }
 
-    public int getNoOfChildDropDowns(){
-        return getElements(childDropDowns).size();
+    public int getNoOfChildrenDropDowns(){
+        return getWebElements(childrenRoomDropDowns).size();
+    }
+
+    public int getNoOfAdultRoomDropDown(){
+        return getWebElements(adultRoomDropDowns).size();
+    }
+
+    public HotelsSearchResultsPage clickOnSearchButton(){
+        clickOn(searchButton);
+        return new HotelsSearchResultsPage();
     }
 }
